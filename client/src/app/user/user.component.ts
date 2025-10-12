@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,14 +8,17 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user.component.less',
 })
 export class UserComponent {
-  @Input()
-  avatar = '';
+  // @Input()
+  // avatar = '';
 
-  @Input()
-  userName = '';
+  // @Input()
+  // userName = '';
+
+  avatar = input.required<string>();
+  userName = input.required<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.avatar();
   }
 
   onSelectUser() {}
