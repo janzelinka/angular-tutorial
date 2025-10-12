@@ -17,6 +17,7 @@ import { IUser } from '../app.component';
 })
 export class UserComponent {
   @Input({ required: true }) user?: IUser;
+  @Input({ required: true }) selected!: boolean;
 
   select = output<string>();
 
