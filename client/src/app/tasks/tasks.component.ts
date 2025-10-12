@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IUser } from '../app.component';
 import { TaskComponent } from './task/task.component';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 export interface ITask {
   id: string;
@@ -13,17 +14,21 @@ export interface ITask {
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.less',
 })
 export class TasksComponent {
   @Input() selectedUser?: IUser;
+
+  isAddTaskVisible = false;
+
   get selectedUserTasks() {
     return this.dummyTasks.filter(
       (task) => task.userId == this.selectedUser?.id
     );
   }
+
   dummyTasks = [
     {
       id: 't1',
@@ -52,5 +57,9 @@ export class TasksComponent {
 
   onCompleteTask(taskId: string) {
     this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+  }
+
+  showTaskWindow() {
+    this.isAddTaskVisible = true;
   }
 }

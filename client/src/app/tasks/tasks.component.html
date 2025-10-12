@@ -2,7 +2,7 @@
   <header>
     <h3>{{ this.selectedUser?.name }}</h3>
     <menu>
-      <button>Add Task</button>
+      <button (click)="showTaskWindow()">Add Task</button>
     </menu>
   </header>
 
@@ -16,4 +16,8 @@
     </li>
     }
   </ul>
+
+  @if (this.isAddTaskVisible) {
+  <app-new-task />
+  }
 </section>
