@@ -1,4 +1,8 @@
-<section>
+@if (this.isAddTaskVisible) {
+<app-new-task (onCloseModal)="hideTaskWindow()" />
+}
+
+<section id="tasks">
   <header>
     <h3>{{ this.selectedUser?.name }}</h3>
     <menu>
@@ -16,8 +20,4 @@
     </li>
     }
   </ul>
-
-  @if (this.isAddTaskVisible) {
-  <app-new-task />
-  }
 </section>

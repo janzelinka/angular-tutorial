@@ -62,4 +62,8 @@ export class TasksComponent {
   showTaskWindow() {
     this.isAddTaskVisible = true;
   }
+
+  hideTaskWindow() {
+    this.isAddTaskVisible = false;
+  }
 }
