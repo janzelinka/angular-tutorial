@@ -6,6 +6,7 @@ import {
   output,
   Output,
 } from '@angular/core';
+import { IUser } from '../app.component';
 
 @Component({
   selector: 'app-user',
@@ -15,26 +16,15 @@ import {
   styleUrl: './user.component.less',
 })
 export class UserComponent {
-  @Input({ required: true }) id!: string;
-
-  @Input()
-  avatar = '';
-
-  @Input()
-  userName = '';
-
-  // @Output() select = new EventEmitter<string>();
+  @Input({ required: true }) user?: IUser;
 
   select = output<string>();
 
-  // avatar = input.required<string>();
-  // userName = input.required<string>();
-
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user?.avatar;
   }
 
   onSelectUser() {
-    this.select.emit(this.id);
+    this.select.emit(this.user?.id ?? '');
   }
 }
