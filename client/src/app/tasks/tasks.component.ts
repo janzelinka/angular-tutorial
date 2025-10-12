@@ -49,4 +49,8 @@ export class TasksComponent {
       dueDate: '2024-06-15',
     },
   ];
+
+  onCompleteTask(taskId: string) {
+    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+  }
 }
