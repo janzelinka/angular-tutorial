@@ -16,4 +16,8 @@ export class AppComponent {
   title = 'client';
 
   users = DUMMY_USERS;
+
+  onSelectUser(userId: string) {
+    console.log(userId);
+  }
 }
