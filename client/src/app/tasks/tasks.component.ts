@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IUser } from '../app.component';
 import { TaskComponent } from './task/task.component';
-import { NewTaskComponent } from './new-task/new-task.component';
+import { INewTask, NewTaskComponent } from './new-task/new-task.component';
 
 export interface ITask {
   id: string;
@@ -65,5 +65,17 @@ export class TasksComponent {
 
   hideTaskWindow() {
     this.isAddTaskVisible = false;
+  }
+
+  onAddTask(task: INewTask) {
+    this.dummyTasks.push({
+      id: new Date().getTime().toString(),
+      title: task.title,
+      summary: task.summary,
+      dueDate: task.dueDate,
+      userId: this.selectedUser?.id!,
+    });
+
+    this.hideTaskWindow();
   }
 }
