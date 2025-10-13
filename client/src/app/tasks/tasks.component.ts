@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IUser } from '../app.component';
 import { TaskComponent } from './task/task.component';
 import { INewTask, NewTaskComponent } from './new-task/new-task.component';
+import { TasksService } from './tasks.service';
 
 export interface ITask {
   id: string;
@@ -23,40 +24,14 @@ export class TasksComponent {
 
   isAddTaskVisible = false;
 
+  constructor(private taskService: TasksService) {}
+
   get selectedUserTasks() {
-    return this.dummyTasks.filter(
-      (task) => task.userId == this.selectedUser?.id
-    );
+    return this.taskService.getUserTasks(this.selectedUser?.id!);
   }
 
-  dummyTasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ];
-
   onCompleteTask(taskId: string) {
-    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+    this.taskService.removeTask(taskId);
   }
 
   showTaskWindow() {
@@ -68,13 +43,7 @@ export class TasksComponent {
   }
 
   onAddTask(task: INewTask) {
-    this.dummyTasks.push({
-      id: new Date().getTime().toString(),
-      title: task.title,
-      summary: task.summary,
-      dueDate: task.dueDate,
-      userId: this.selectedUser?.id!,
-    });
+    this.taskService.addTask(task, this.selectedUser?.id!);
 
     this.hideTaskWindow();
   }
