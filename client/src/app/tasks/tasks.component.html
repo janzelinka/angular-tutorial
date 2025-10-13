@@ -1,5 +1,9 @@
 @if (this.isAddTaskVisible) {
-<app-new-task (onCloseModal)="hideTaskWindow()" (add)="onAddTask($event)" />
+<app-new-task
+  (onCloseModal)="hideTaskWindow()"
+  (add)="onAddTask($event)"
+  [userId]="selectedUser?.id!"
+/>
 }
 
 <section id="tasks">
