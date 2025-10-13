@@ -1,9 +1,5 @@
 @if (this.isAddTaskVisible) {
-<app-new-task
-  (onCloseModal)="hideTaskWindow()"
-  (add)="onAddTask($event)"
-  [userId]="selectedUser?.id!"
-/>
+<app-new-task (onCloseModal)="hideTaskWindow()" [userId]="selectedUser?.id!" />
 }
 
 <section id="tasks">
@@ -17,10 +13,7 @@
   <ul>
     @for(task of selectedUserTasks; track task.id) {
     <li>
-      <app-task
-        (completeTask)="onCompleteTask($event)"
-        [task]="task"
-      ></app-task>
+      <app-task [task]="task"></app-task>
     </li>
     }
   </ul>

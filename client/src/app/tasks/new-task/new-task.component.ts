@@ -25,7 +25,6 @@ export interface INewTask {
 export class NewTaskComponent {
   @Input({ required: true }) userId!: string;
   @Output() onCloseModal = new EventEmitter();
-  @Output() add = new EventEmitter<INewTask>();
 
   enteredTitle = signal('');
   enteredSummary = signal('');
@@ -38,12 +37,6 @@ export class NewTaskComponent {
   }
 
   handleSubmit() {
-    // console.log(this.enteredTitle(), this.enteredSummary(), this.enteredDate());
-    // this.add.emit({
-    //   dueDate: this.enteredDate(),
-    //   summary: this.enteredSummary(),
-    //   title: this.enteredTitle(),
-    // });
     this.tasksService.addTask(
       {
         dueDate: this.enteredDate(),
@@ -52,5 +45,6 @@ export class NewTaskComponent {
       },
       this.userId
     );
+    this.closeModal();
   }
 }

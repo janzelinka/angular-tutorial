@@ -30,21 +30,11 @@ export class TasksComponent {
     return this.taskService.getUserTasks(this.selectedUser?.id!);
   }
 
-  onCompleteTask(taskId: string) {
-    this.taskService.removeTask(taskId);
-  }
-
   showTaskWindow() {
     this.isAddTaskVisible = true;
   }
 
   hideTaskWindow() {
     this.isAddTaskVisible = false;
-  }
-
-  onAddTask(task: INewTask) {
-    this.taskService.addTask(task, this.selectedUser?.id!);
-
-    this.hideTaskWindow();
   }
 }
