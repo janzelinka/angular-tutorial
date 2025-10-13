@@ -7,11 +7,12 @@ import {
   Output,
 } from '@angular/core';
 import { IUser } from '../app.component';
+import { CardComponent } from '../shared/card/card.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.less',
 })
