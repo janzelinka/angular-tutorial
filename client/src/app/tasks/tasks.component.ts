@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IUser } from '../app.component';
-import { TaskComponent } from './task/task.component';
-import { INewTask, NewTaskComponent } from './new-task/new-task.component';
 import { TasksService } from './tasks.service';
 
 export interface ITask {

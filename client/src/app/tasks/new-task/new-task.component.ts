@@ -6,7 +6,6 @@ import {
   Output,
   signal,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { TasksService } from '../tasks.service';
 
 export interface INewTask {
