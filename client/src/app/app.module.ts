@@ -5,7 +5,6 @@ import { TasksComponent } from './tasks/tasks.component';
 import { UserComponent } from './user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
-import { CardComponent } from './shared/card/card.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { TaskComponent } from './tasks/task/task.component';
